@@ -1,0 +1,1788 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>J2勝点シミュレータ（仮）</title>
+    <meta property="og:url" content="https://calc-points.web.app" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="J2勝点シミュレータ（仮）" />
+    <meta property="og:description" content="残り試合数も少なくなってきた2019年シーズン。優勝、ACL、残留と気が気でないあなたに、いっそのこと自分で計算してみましょうというサイトを（ザックリ）作りました。"/>
+    <meta property="og:site_name" content="J2勝点シミュレータ（仮）" />
+    <meta property="og:image" content=" https://calc-points.web.app/point-calc-og.png" />
+    <meta name="twitter:card" content="summary" />
+
+    <style media="screen">
+        .selectradio { list-style: none; margin: 0; padding: 0; }
+        .selectradio .selectradio-item { margin: 5px 0; padding: 0; }
+        .selectradio input[type="radio"] { display: none; }
+        .selectradio input[type="radio"]:checked + label { background: #C0E8FF; color: #333333; border: 2px solid #28A7E1; }
+        .selectradio .selectradio-label { display: block; width: 100%; height: 45px; text-align: center; line-height: 45px;
+            padding: 0 0px; cursor: pointer; color: #333333; border: 2px solid rgba(0, 0, 0, 0); border-radius: 5px; background: #EEFECD; transition: 0.5s; border-radius: 4px; }
+        .selectradio.selectradio-inline .selectradio-item { display: inline-block; }
+        .selectradio.selectradio-inline .selectradio-label { display: inline-block; width: 50px; }
+        .is-fixed { position: fixed; top: 30px; right: 0; z-index: 2; width: 40%;}
+        .is-fixed-bottun { position: fixed; top: 5px; right: 80px; z-index: 2; width: 75px;}
+        .is-fixed-bottun-2 { position: fixed; top: 5px; right: 5px; z-index: 2; width: 75px;}
+    </style>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+    <script type="text/javascript" src="main_j2.js"></script>
+  </head>
+  <body>
+
+    J2勝点シミュレータ（仮）
+
+
+
+    <form id="calctable" name="ptable" action="#">
+        <!--34節-->
+        <details>
+        <summary>34節</summary>
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m3401" id="m3401-1" value="1" >
+                <label for="m3401-1" class="selectradio-label">新潟</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3401" id="m3401-2" value="0">
+                <label for="m3401-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3401" id="m3401-3" value="2">
+                <label for="m3401-3" class="selectradio-label">水戸</label>
+                </li>
+            </ul>
+        </div>
+
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m3402" id="m3402-1" value="1" >
+                <label for="m3402-1" class="selectradio-label">柏</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3402" id="m3402-2" value="0" >
+                <label for="m3402-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3402" id="m3402-3" value="2">
+                <label for="m3402-3" class="selectradio-label">東京V</label>
+                </li>
+            </ul>
+        </div>
+
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m3403" id="m3403-1" value="1" >
+                <label for="m3403-1" class="selectradio-label">愛媛</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3403" id="m3403-2" value="0" >
+                <label for="m3403-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3403" id="m3403-3" value="2">
+                <label for="m3403-3" class="selectradio-label">栃木</label>
+                </li>
+            </ul>
+        </div>
+
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m3404" id="m3404-1" value="1" >
+                <label for="m3404-1" class="selectradio-label">大宮</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3404" id="m3404-2" value="0" >
+                <label for="m3404-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3404" id="m3404-3" value="2">
+                <label for="m3404-3" class="selectradio-label">長崎</label>
+                </li>
+            </ul>
+        </div>
+
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m3405" id="m3405-1" value="1" >
+                <label for="m3405-1" class="selectradio-label">徳島</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3405" id="m3405-2" value="0" >
+                <label for="m3405-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3405" id="m3405-3" value="2">
+                <label for="m3405-3" class="selectradio-label">金沢</label>
+                </li>
+            </ul>
+        </div>
+
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m3406" id="m3406-1" value="1" >
+                <label for="m3406-1" class="selectradio-label">山口</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3406" id="m3406-2" value="0" >
+                <label for="m3406-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3406" id="m3406-3" value="2">
+                <label for="m3406-3" class="selectradio-label">福岡</label>
+                </li>
+            </ul>
+        </div>
+
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m3407" id="m3407-1" value="1" >
+                <label for="m3407-1" class="selectradio-label">鹿児島</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3407" id="m3407-2" value="0" >
+                <label for="m3407-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3407" id="m3407-3" value="2">
+                <label for="m3407-3" class="selectradio-label">京都</label>
+                </li>
+            </ul>
+        </div>
+
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m3408" id="m3408-1" value="1" >
+                <label for="m3408-1" class="selectradio-label">山形</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3408" id="m3408-2" value="0" >
+                <label for="m3408-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3408" id="m3408-3" value="2">
+                <label for="m3408-3" class="selectradio-label">甲府</label>
+                </li>
+            </ul>
+        </div>
+
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m3409" id="m3409-1" value="1" >
+                <label for="m3409-1" class="selectradio-label">町田</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3409" id="m3409-2" value="0" >
+                <label for="m3409-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3409" id="m3409-3" value="2">
+                <label for="m3409-3" class="selectradio-label">琉球</label>
+                </li>
+            </ul>
+        </div>
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m3410" id="m3410-1" value="1" >
+                <label for="m3410-1" class="selectradio-label">岐阜</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3410" id="m3410-2" value="0" >
+                <label for="m3410-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3410" id="m3410-3" value="2">
+                <label for="m3410-3" class="selectradio-label">横浜C</label>
+                </li>
+            </ul>
+        </div>
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m3411" id="m3411-1" value="1" >
+                <label for="m3411-1" class="selectradio-label">岡山</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3411" id="m3411-2" value="0" >
+                <label for="m3411-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3411" id="m3411-3" value="2">
+                <label for="m3411-3" class="selectradio-label">千葉</label>
+                </li>
+            </ul>
+        </div>
+        </details>
+        <br>
+
+        <!--35節-->
+        <details>
+        <summary>35節</summary>
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m3501" id="m3501-1" value="1" >
+                <label for="m3501-1" class="selectradio-label">新潟</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3501" id="m3501-2" value="0">
+                <label for="m3501-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3501" id="m3501-3" value="2">
+                <label for="m3501-3" class="selectradio-label">鹿児島</label>
+                </li>
+            </ul>
+        </div>
+
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m3502" id="m3502-1" value="1" >
+                <label for="m3502-1" class="selectradio-label">東京V</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3502" id="m3502-2" value="0" >
+                <label for="m3502-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3502" id="m3502-3" value="2">
+                <label for="m3502-3" class="selectradio-label">岡山</label>
+                </li>
+            </ul>
+        </div>
+
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m3503" id="m3503-1" value="1" >
+                <label for="m3503-1" class="selectradio-label">福岡</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3503" id="m3503-2" value="0" >
+                <label for="m3503-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3503" id="m3503-3" value="2">
+                <label for="m3503-3" class="selectradio-label">琉球</label>
+                </li>
+            </ul>
+        </div>
+
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m3504" id="m3504-1" value="1" >
+                <label for="m3504-1" class="selectradio-label">長崎</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3504" id="m3504-2" value="0" >
+                <label for="m3504-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3504" id="m3504-3" value="2">
+                <label for="m3504-3" class="selectradio-label">町田</label>
+                </li>
+            </ul>
+        </div>
+
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m3505" id="m3505-1" value="1" >
+                <label for="m3505-1" class="selectradio-label">横浜C</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3505" id="m3505-2" value="0" >
+                <label for="m3505-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3505" id="m3505-3" value="2">
+                <label for="m3505-3" class="selectradio-label">柏</label>
+                </li>
+            </ul>
+        </div>
+
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m3506" id="m3506-1" value="1" >
+                <label for="m3506-1" class="selectradio-label">金沢</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3506" id="m3506-2" value="0" >
+                <label for="m3506-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3506" id="m3506-3" value="2">
+                <label for="m3506-3" class="selectradio-label">甲府</label>
+                </li>
+            </ul>
+        </div>
+
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m3507" id="m3507-1" value="1" >
+                <label for="m3507-1" class="selectradio-label">水戸</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3507" id="m3507-2" value="0" >
+                <label for="m3507-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3507" id="m3507-3" value="2">
+                <label for="m3507-3" class="selectradio-label">大宮</label>
+                </li>
+            </ul>
+        </div>
+
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m3508" id="m3508-1" value="1" >
+                <label for="m3508-1" class="selectradio-label">京都</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3508" id="m3508-2" value="0" >
+                <label for="m3508-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3508" id="m3508-3" value="2">
+                <label for="m3508-3" class="selectradio-label">愛媛</label>
+                </li>
+            </ul>
+        </div>
+
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m3509" id="m3509-1" value="1" >
+                <label for="m3509-1" class="selectradio-label">栃木</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3509" id="m3509-2" value="0" >
+                <label for="m3509-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3509" id="m3509-3" value="2">
+                <label for="m3509-3" class="selectradio-label">徳島</label>
+                </li>
+            </ul>
+        </div>
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m3510" id="m3510-1" value="1" >
+                <label for="m3510-1" class="selectradio-label">千葉</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3510" id="m3510-2" value="0" >
+                <label for="m3510-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3510" id="m3510-3" value="2">
+                <label for="m3510-3" class="selectradio-label">山形</label>
+                </li>
+            </ul>
+        </div>
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m3511" id="m3511-1" value="1" >
+                <label for="m3511-1" class="selectradio-label">岐阜</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3511" id="m3511-2" value="0" >
+                <label for="m3511-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3511" id="m3511-3" value="2">
+                <label for="m3511-3" class="selectradio-label">山口</label>
+                </li>
+            </ul>
+        </div>
+        </details>
+        <br>
+
+        <!--36節-->
+        <details>
+        <summary>36節</summary>
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m3601" id="m3601-1" value="1" >
+                <label for="m3601-1" class="selectradio-label">横浜C</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3601" id="m3601-2" value="0">
+                <label for="m3601-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3601" id="m3601-3" value="2">
+                <label for="m3601-3" class="selectradio-label">金沢</label>
+                </li>
+            </ul>
+        </div>
+
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m3602" id="m3602-1" value="1" >
+                <label for="m3602-1" class="selectradio-label">大宮</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3602" id="m3602-2" value="0" >
+                <label for="m3602-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3602" id="m3602-3" value="2">
+                <label for="m3602-3" class="selectradio-label">福岡</label>
+                </li>
+            </ul>
+        </div>
+
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m3603" id="m3603-1" value="1" >
+                <label for="m3603-1" class="selectradio-label">山口</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3603" id="m3603-2" value="0" >
+                <label for="m3603-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3603" id="m3603-3" value="2">
+                <label for="m3603-3" class="selectradio-label">京都</label>
+                </li>
+            </ul>
+        </div>
+
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m3604" id="m3604-1" value="1" >
+                <label for="m3604-1" class="selectradio-label">柏</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3604" id="m3604-2" value="0" >
+                <label for="m3604-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3604" id="m3604-3" value="2">
+                <label for="m3604-3" class="selectradio-label">水戸</label>
+                </li>
+            </ul>
+        </div>
+
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m3605" id="m3605-1" value="1" >
+                <label for="m3605-1" class="selectradio-label">長崎</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3605" id="m3605-2" value="0" >
+                <label for="m3605-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3605" id="m3605-3" value="2">
+                <label for="m3605-3" class="selectradio-label">千葉</label>
+                </li>
+            </ul>
+        </div>
+
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m3606" id="m3606-1" value="1" >
+                <label for="m3606-1" class="selectradio-label">琉球</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3606" id="m3606-2" value="0" >
+                <label for="m3606-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3606" id="m3606-3" value="2">
+                <label for="m3606-3" class="selectradio-label">東京V</label>
+                </li>
+            </ul>
+        </div>
+
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m3607" id="m3607-1" value="1" >
+                <label for="m3607-1" class="selectradio-label">山形</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3607" id="m3607-2" value="0" >
+                <label for="m3607-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3607" id="m3607-3" value="2">
+                <label for="m3607-3" class="selectradio-label">岐阜</label>
+                </li>
+            </ul>
+        </div>
+
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m3608" id="m3608-1" value="1" >
+                <label for="m3608-1" class="selectradio-label">徳島</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3608" id="m3608-2" value="0" >
+                <label for="m3608-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3608" id="m3608-3" value="2">
+                <label for="m3608-3" class="selectradio-label">岡山</label>
+                </li>
+            </ul>
+        </div>
+
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m3609" id="m3609-1" value="1" >
+                <label for="m3609-1" class="selectradio-label">愛媛</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3609" id="m3609-2" value="0" >
+                <label for="m3609-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3609" id="m3609-3" value="2">
+                <label for="m3609-3" class="selectradio-label">新潟</label>
+                </li>
+            </ul>
+        </div>
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m3610" id="m3610-1" value="1" >
+                <label for="m3610-1" class="selectradio-label">町田</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3610" id="m3610-2" value="0" >
+                <label for="m3610-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3610" id="m3610-3" value="2">
+                <label for="m3610-3" class="selectradio-label">鹿児島</label>
+                </li>
+            </ul>
+        </div>
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m3611" id="m3611-1" value="1" >
+                <label for="m3611-1" class="selectradio-label">甲府</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3611" id="m3611-2" value="0" >
+                <label for="m3611-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3611" id="m3611-3" value="2">
+                <label for="m3611-3" class="selectradio-label">栃木</label>
+                </li>
+            </ul>
+        </div>
+        </details>
+        <br>
+
+        <!--37節-->
+        <details>
+        <summary>37節</summary>
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m3701" id="m3701-1" value="1" >
+                <label for="m3701-1" class="selectradio-label">京都</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3701" id="m3701-2" value="0">
+                <label for="m3701-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3701" id="m3701-3" value="2">
+                <label for="m3701-3" class="selectradio-label">横浜C</label>
+                </li>
+            </ul>
+        </div>
+
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m3702" id="m3702-1" value="1" >
+                <label for="m3702-1" class="selectradio-label">福岡</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3702" id="m3702-2" value="0" >
+                <label for="m3702-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3702" id="m3702-3" value="2">
+                <label for="m3702-3" class="selectradio-label">新潟</label>
+                </li>
+            </ul>
+        </div>
+
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m3703" id="m3703-1" value="1" >
+                <label for="m3703-1" class="selectradio-label">東京V</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3703" id="m3703-2" value="0" >
+                <label for="m3703-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3703" id="m3703-3" value="2">
+                <label for="m3703-3" class="selectradio-label">甲府</label>
+                </li>
+            </ul>
+        </div>
+
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m3704" id="m3704-1" value="1" >
+                <label for="m3704-1" class="selectradio-label">大宮</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3704" id="m3704-2" value="0" >
+                <label for="m3704-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3704" id="m3704-3" value="2">
+                <label for="m3704-3" class="selectradio-label">徳島</label>
+                </li>
+            </ul>
+        </div>
+
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m3705" id="m3705-1" value="1" >
+                <label for="m3705-1" class="selectradio-label">鹿児島</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3705" id="m3705-2" value="0" >
+                <label for="m3705-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3705" id="m3705-3" value="2">
+                <label for="m3705-3" class="selectradio-label">山口</label>
+                </li>
+            </ul>
+        </div>
+
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m3706" id="m3706-1" value="1" >
+                <label for="m3706-1" class="selectradio-label">栃木</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3706" id="m3706-2" value="0" >
+                <label for="m3706-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3706" id="m3706-3" value="2">
+                <label for="m3706-3" class="selectradio-label">琉球</label>
+                </li>
+            </ul>
+        </div>
+
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m3707" id="m3707-1" value="1" >
+                <label for="m3707-1" class="selectradio-label">岐阜</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3707" id="m3707-2" value="0" >
+                <label for="m3707-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3707" id="m3707-3" value="2">
+                <label for="m3707-3" class="selectradio-label">愛媛</label>
+                </li>
+            </ul>
+        </div>
+
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m3708" id="m3708-1" value="1" >
+                <label for="m3708-1" class="selectradio-label">金沢</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3708" id="m3708-2" value="0" >
+                <label for="m3708-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3708" id="m3708-3" value="2">
+                <label for="m3708-3" class="selectradio-label">山形</label>
+                </li>
+            </ul>
+        </div>
+
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m3709" id="m3709-1" value="1" >
+                <label for="m3709-1" class="selectradio-label">水戸</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3709" id="m3709-2" value="0" >
+                <label for="m3709-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3709" id="m3709-3" value="2">
+                <label for="m3709-3" class="selectradio-label">町田</label>
+                </li>
+            </ul>
+        </div>
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m3710" id="m3710-1" value="1" >
+                <label for="m3710-1" class="selectradio-label">千葉</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3710" id="m3710-2" value="0" >
+                <label for="m3710-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3710" id="m3710-3" value="2">
+                <label for="m3710-3" class="selectradio-label">柏</label>
+                </li>
+            </ul>
+        </div>
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m3711" id="m3711-1" value="1" >
+                <label for="m3711-1" class="selectradio-label">岡山</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3711" id="m3711-2" value="0" >
+                <label for="m3711-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3711" id="m3711-3" value="2">
+                <label for="m3711-3" class="selectradio-label">長崎</label>
+                </li>
+            </ul>
+        </div>
+        </details>
+        <br>
+
+        <!--38節-->
+        <details>
+        <summary>38節</summary>
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m3801" id="m3801-1" value="1" >
+                <label for="m3801-1" class="selectradio-label">山形</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3801" id="m3801-2" value="0">
+                <label for="m3801-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3801" id="m3801-3" value="2">
+                <label for="m3801-3" class="selectradio-label">愛媛</label>
+                </li>
+            </ul>
+        </div>
+
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m3802" id="m3802-1" value="1" >
+                <label for="m3802-1" class="selectradio-label">琉球</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3802" id="m3802-2" value="0" >
+                <label for="m3802-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3802" id="m3802-3" value="2">
+                <label for="m3802-3" class="selectradio-label">大宮</label>
+                </li>
+            </ul>
+        </div>
+
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m3803" id="m3803-1" value="1" >
+                <label for="m3803-1" class="selectradio-label">徳島</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3803" id="m3803-2" value="0" >
+                <label for="m3803-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3803" id="m3803-3" value="2">
+                <label for="m3803-3" class="selectradio-label">水戸</label>
+                </li>
+            </ul>
+        </div>
+
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m3804" id="m3804-1" value="1" >
+                <label for="m3804-1" class="selectradio-label">新潟</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3804" id="m3804-2" value="0" >
+                <label for="m3804-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3804" id="m3804-3" value="2">
+                <label for="m3804-3" class="selectradio-label">京都</label>
+                </li>
+            </ul>
+        </div>
+
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m3805" id="m3805-1" value="1" >
+                <label for="m3805-1" class="selectradio-label">横浜C</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3805" id="m3805-2" value="0" >
+                <label for="m3805-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3805" id="m3805-3" value="2">
+                <label for="m3805-3" class="selectradio-label">東京V</label>
+                </li>
+            </ul>
+        </div>
+
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m3806" id="m3806-1" value="1" >
+                <label for="m3806-1" class="selectradio-label">長崎</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3806" id="m3806-2" value="0" >
+                <label for="m3806-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3806" id="m3806-3" value="2">
+                <label for="m3806-3" class="selectradio-label">金沢</label>
+                </li>
+            </ul>
+        </div>
+
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m3807" id="m3807-1" value="1" >
+                <label for="m3807-1" class="selectradio-label">甲府</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3807" id="m3807-2" value="0" >
+                <label for="m3807-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3807" id="m3807-3" value="2">
+                <label for="m3807-3" class="selectradio-label">鹿児島</label>
+                </li>
+            </ul>
+        </div>
+
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m3808" id="m3808-1" value="1" >
+                <label for="m3808-1" class="selectradio-label">町田</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3808" id="m3808-2" value="0" >
+                <label for="m3808-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3808" id="m3808-3" value="2">
+                <label for="m3808-3" class="selectradio-label">岐阜</label>
+                </li>
+            </ul>
+        </div>
+
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m3809" id="m3809-1" value="1" >
+                <label for="m3809-1" class="selectradio-label">柏</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3809" id="m3809-2" value="0" >
+                <label for="m3809-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3809" id="m3809-3" value="2">
+                <label for="m3809-3" class="selectradio-label">福岡</label>
+                </li>
+            </ul>
+        </div>
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m3810" id="m3810-1" value="1" >
+                <label for="m3810-1" class="selectradio-label">山口</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3810" id="m3810-2" value="0" >
+                <label for="m3810-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3810" id="m3810-3" value="2">
+                <label for="m3810-3" class="selectradio-label">千葉</label>
+                </li>
+            </ul>
+        </div>
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m3811" id="m3811-1" value="1" >
+                <label for="m3811-1" class="selectradio-label">岡山</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3811" id="m3811-2" value="0" >
+                <label for="m3811-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3811" id="m3811-3" value="2">
+                <label for="m3811-3" class="selectradio-label">栃木</label>
+                </li>
+            </ul>
+        </div>
+        </details>
+        <br>
+
+        <!--23節延期分-->
+        <details>
+        <summary>23節延期分</summary>
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m2301" id="m2301-1" value="1" >
+                <label for="m2301-1" class="selectradio-label">鹿児島</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m2301" id="m2301-2" value="0">
+                <label for="m2301-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m2301" id="m2301-3" value="2">
+                <label for="m2301-3" class="selectradio-label">岐阜</label>
+                </li>
+            </ul>
+        </div>
+        </details>
+        <br>
+
+        <!--39節-->
+        <details>
+        <summary>39節</summary>
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m3901" id="m3901-1" value="1" >
+                <label for="m3901-1" class="selectradio-label">福岡</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3901" id="m3901-2" value="0">
+                <label for="m3901-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3901" id="m3901-3" value="2">
+                <label for="m3901-3" class="selectradio-label">東京V</label>
+                </li>
+            </ul>
+        </div>
+
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m3902" id="m3902-1" value="1" >
+                <label for="m3902-1" class="selectradio-label">岐阜</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3902" id="m3902-2" value="0" >
+                <label for="m3902-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3902" id="m3902-3" value="2">
+                <label for="m3902-3" class="selectradio-label">徳島</label>
+                </li>
+            </ul>
+        </div>
+
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m3903" id="m3903-1" value="1" >
+                <label for="m3903-1" class="selectradio-label">大宮</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3903" id="m3903-2" value="0" >
+                <label for="m3903-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3903" id="m3903-3" value="2">
+                <label for="m3903-3" class="selectradio-label">柏</label>
+                </li>
+            </ul>
+        </div>
+
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m3904" id="m3904-1" value="1" >
+                <label for="m3904-1" class="selectradio-label">鹿児島</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3904" id="m3904-2" value="0" >
+                <label for="m3904-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3904" id="m3904-3" value="2">
+                <label for="m3904-3" class="selectradio-label">岡山</label>
+                </li>
+            </ul>
+        </div>
+
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m3905" id="m3905-1" value="1" >
+                <label for="m3905-1" class="selectradio-label">水戸</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3905" id="m3905-2" value="0" >
+                <label for="m3905-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3905" id="m3905-3" value="2">
+                <label for="m3905-3" class="selectradio-label">山形</label>
+                </li>
+            </ul>
+        </div>
+
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m3906" id="m3906-1" value="1" >
+                <label for="m3906-1" class="selectradio-label">千葉</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3906" id="m3906-2" value="0" >
+                <label for="m3906-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3906" id="m3906-3" value="2">
+                <label for="m3906-3" class="selectradio-label">金沢</label>
+                </li>
+            </ul>
+        </div>
+
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m3907" id="m3907-1" value="1" >
+                <label for="m3907-1" class="selectradio-label">栃木</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3907" id="m3907-2" value="0" >
+                <label for="m3907-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3907" id="m3907-3" value="2">
+                <label for="m3907-3" class="selectradio-label">新潟</label>
+                </li>
+            </ul>
+        </div>
+
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m3908" id="m3908-1" value="1" >
+                <label for="m3908-1" class="selectradio-label">横浜C</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3908" id="m3908-2" value="0" >
+                <label for="m3908-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3908" id="m3908-3" value="2">
+                <label for="m3908-3" class="selectradio-label">長崎</label>
+                </li>
+            </ul>
+        </div>
+
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m3909" id="m3909-1" value="1" >
+                <label for="m3909-1" class="selectradio-label">愛媛</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3909" id="m3909-2" value="0" >
+                <label for="m3909-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3909" id="m3909-3" value="2">
+                <label for="m3909-3" class="selectradio-label">町田</label>
+                </li>
+            </ul>
+        </div>
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m3910" id="m3910-1" value="1" >
+                <label for="m3910-1" class="selectradio-label">山口</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3910" id="m3910-2" value="0" >
+                <label for="m3910-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3910" id="m3910-3" value="2">
+                <label for="m3910-3" class="selectradio-label">琉球</label>
+                </li>
+            </ul>
+        </div>
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m3911" id="m3911-1" value="1" >
+                <label for="m3911-1" class="selectradio-label">京都</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3911" id="m3911-2" value="0" >
+                <label for="m3911-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m3911" id="m3911-3" value="2">
+                <label for="m3911-3" class="selectradio-label">甲府</label>
+                </li>
+            </ul>
+        </div>
+        </details>
+        <br>
+
+        <!--40節-->
+        <details>
+        <summary>40節</summary>
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m4001" id="m4001-1" value="1" >
+                <label for="m4001-1" class="selectradio-label">新潟</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m4001" id="m4001-2" value="0">
+                <label for="m4001-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m4001" id="m4001-3" value="2">
+                <label for="m4001-3" class="selectradio-label">岐阜</label>
+                </li>
+            </ul>
+        </div>
+
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m4002" id="m4002-1" value="1" >
+                <label for="m4002-1" class="selectradio-label">柏</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m4002" id="m4002-2" value="0" >
+                <label for="m4002-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m4002" id="m4002-3" value="2">
+                <label for="m4002-3" class="selectradio-label">鹿児島</label>
+                </li>
+            </ul>
+        </div>
+
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m4003" id="m4003-1" value="1" >
+                <label for="m4003-1" class="selectradio-label">水戸</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m4003" id="m4003-2" value="0" >
+                <label for="m4003-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m4003" id="m4003-3" value="2">
+                <label for="m4003-3" class="selectradio-label">愛媛</label>
+                </li>
+            </ul>
+        </div>
+
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m4004" id="m4004-1" value="1" >
+                <label for="m4004-1" class="selectradio-label">山形</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m4004" id="m4004-2" value="0" >
+                <label for="m4004-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m4004" id="m4004-3" value="2">
+                <label for="m4004-3" class="selectradio-label">長崎</label>
+                </li>
+            </ul>
+        </div>
+
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m4005" id="m4005-1" value="1" >
+                <label for="m4005-1" class="selectradio-label">栃木</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m4005" id="m4005-2" value="0" >
+                <label for="m4005-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m4005" id="m4005-3" value="2">
+                <label for="m4005-3" class="selectradio-label">大宮</label>
+                </li>
+            </ul>
+        </div>
+
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m4006" id="m4006-1" value="1" >
+                <label for="m4006-1" class="selectradio-label">町田</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m4006" id="m4006-2" value="0" >
+                <label for="m4006-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m4006" id="m4006-3" value="2">
+                <label for="m4006-3" class="selectradio-label">山口</label>
+                </li>
+            </ul>
+        </div>
+
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m4007" id="m4007-1" value="1" >
+                <label for="m4007-1" class="selectradio-label">金沢</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m4007" id="m4007-2" value="0" >
+                <label for="m4007-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m4007" id="m4007-3" value="2">
+                <label for="m4007-3" class="selectradio-label">岡山</label>
+                </li>
+            </ul>
+        </div>
+
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m4008" id="m4008-1" value="1" >
+                <label for="m4008-1" class="selectradio-label">徳島</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m4008" id="m4008-2" value="0" >
+                <label for="m4008-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m4008" id="m4008-3" value="2">
+                <label for="m4008-3" class="selectradio-label">横浜C</label>
+                </li>
+            </ul>
+        </div>
+
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m4009" id="m4009-1" value="1" >
+                <label for="m4009-1" class="selectradio-label">甲府</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m4009" id="m4009-2" value="0" >
+                <label for="m4009-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m4009" id="m4009-3" value="2">
+                <label for="m4009-3" class="selectradio-label">福岡</label>
+                </li>
+            </ul>
+        </div>
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m4010" id="m4010-1" value="1" >
+                <label for="m4010-1" class="selectradio-label">千葉</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m4010" id="m4010-2" value="0" >
+                <label for="m4010-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m4010" id="m4010-3" value="2">
+                <label for="m4010-3" class="selectradio-label">東京V</label>
+                </li>
+            </ul>
+        </div>
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m4011" id="m4011-1" value="1" >
+                <label for="m4011-1" class="selectradio-label">琉球</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m4011" id="m4011-2" value="0" >
+                <label for="m4011-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m4011" id="m4011-3" value="2">
+                <label for="m4011-3" class="selectradio-label">京都</label>
+                </li>
+            </ul>
+        </div>
+        </details>
+        <br>
+
+        <!--41節-->
+        <details>
+        <summary>41節</summary>
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m4101" id="m4101-1" value="1" >
+                <label for="m4101-1" class="selectradio-label">福岡</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m4101" id="m4101-2" value="0">
+                <label for="m4101-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m4101" id="m4101-3" value="2">
+                <label for="m4101-3" class="selectradio-label">金沢</label>
+                </li>
+            </ul>
+        </div>
+
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m4102" id="m4102-1" value="1" >
+                <label for="m4102-1" class="selectradio-label">山口</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m4102" id="m4102-2" value="0" >
+                <label for="m4102-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m4102" id="m4102-3" value="2">
+                <label for="m4102-3" class="selectradio-label">山形</label>
+                </li>
+            </ul>
+        </div>
+
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m4103" id="m4103-1" value="1" >
+                <label for="m4103-1" class="selectradio-label">大宮</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m4103" id="m4103-2" value="0" >
+                <label for="m4103-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m4103" id="m4103-3" value="2">
+                <label for="m4103-3" class="selectradio-label">新潟</label>
+                </li>
+            </ul>
+        </div>
+
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m4104" id="m4104-1" value="1" >
+                <label for="m4104-1" class="selectradio-label">京都</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m4104" id="m4104-2" value="0" >
+                <label for="m4104-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m4104" id="m4104-3" value="2">
+                <label for="m4104-3" class="selectradio-label">千葉</label>
+                </li>
+            </ul>
+        </div>
+
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m4105" id="m4105-1" value="1" >
+                <label for="m4105-1" class="selectradio-label">岐阜</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m4105" id="m4105-2" value="0" >
+                <label for="m4105-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m4105" id="m4105-3" value="2">
+                <label for="m4105-3" class="selectradio-label">甲府</label>
+                </li>
+            </ul>
+        </div>
+
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m4106" id="m4106-1" value="1" >
+                <label for="m4106-1" class="selectradio-label">愛媛</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m4106" id="m4106-2" value="0" >
+                <label for="m4106-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m4106" id="m4106-3" value="2">
+                <label for="m4106-3" class="selectradio-label">琉球</label>
+                </li>
+            </ul>
+        </div>
+
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m4107" id="m4107-1" value="1" >
+                <label for="m4107-1" class="selectradio-label">町田</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m4107" id="m4107-2" value="0" >
+                <label for="m4107-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m4107" id="m4107-3" value="2">
+                <label for="m4107-3" class="selectradio-label">柏</label>
+                </li>
+            </ul>
+        </div>
+
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m4108" id="m4108-1" value="1" >
+                <label for="m4108-1" class="selectradio-label">長崎</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m4108" id="m4108-2" value="0" >
+                <label for="m4108-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m4108" id="m4108-3" value="2">
+                <label for="m4108-3" class="selectradio-label">栃木</label>
+                </li>
+            </ul>
+        </div>
+
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m4109" id="m4109-1" value="1" >
+                <label for="m4109-1" class="selectradio-label">岡山</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m4109" id="m4109-2" value="0" >
+                <label for="m4109-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m4109" id="m4109-3" value="2">
+                <label for="m4109-3" class="selectradio-label">横浜C</label>
+                </li>
+            </ul>
+        </div>
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m4110" id="m4110-1" value="1" >
+                <label for="m4110-1" class="selectradio-label">東京V</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m4110" id="m4110-2" value="0" >
+                <label for="m4110-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m4110" id="m4110-3" value="2">
+                <label for="m4110-3" class="selectradio-label">徳島</label>
+                </li>
+            </ul>
+        </div>
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m4111" id="m4111-1" value="1" >
+                <label for="m4111-1" class="selectradio-label">鹿児島</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m4111" id="m4111-2" value="0" >
+                <label for="m4111-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m4111" id="m4111-3" value="2">
+                <label for="m4111-3" class="selectradio-label">水戸</label>
+                </li>
+            </ul>
+        </div>
+        </details>
+        <br>
+
+        <!--42節-->
+        <details>
+        <summary>最終節</summary>
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m4201" id="m4201-1" value="1" >
+                <label for="m4201-1" class="selectradio-label">甲府</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m4201" id="m4201-2" value="0">
+                <label for="m4201-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m4201" id="m4201-3" value="2">
+                <label for="m4201-3" class="selectradio-label">琉球</label>
+                </li>
+            </ul>
+        </div>
+
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m4202" id="m4202-1" value="1" >
+                <label for="m4202-1" class="selectradio-label">水戸</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m4202" id="m4202-2" value="0" >
+                <label for="m4202-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m4202" id="m4202-3" value="2">
+                <label for="m4202-3" class="selectradio-label">岡山</label>
+                </li>
+            </ul>
+        </div>
+
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m4203" id="m4203-1" value="1" >
+                <label for="m4203-1" class="selectradio-label">徳島</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m4203" id="m4203-2" value="0" >
+                <label for="m4203-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m4203" id="m4203-3" value="2">
+                <label for="m4203-3" class="selectradio-label">山口</label>
+                </li>
+            </ul>
+        </div>
+
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m4204" id="m4204-1" value="1" >
+                <label for="m4204-1" class="selectradio-label">千葉</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m4204" id="m4204-2" value="0" >
+                <label for="m4204-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m4204" id="m4204-3" value="2">
+                <label for="m4204-3" class="selectradio-label">栃木</label>
+                </li>
+            </ul>
+        </div>
+
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m4205" id="m4205-1" value="1" >
+                <label for="m4205-1" class="selectradio-label">山形</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m4205" id="m4205-2" value="0" >
+                <label for="m4205-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m4205" id="m4205-3" value="2">
+                <label for="m4205-3" class="selectradio-label">町田</label>
+                </li>
+            </ul>
+        </div>
+
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m4206" id="m4206-1" value="1" >
+                <label for="m4206-1" class="selectradio-label">新潟</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m4206" id="m4206-2" value="0" >
+                <label for="m4206-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m4206" id="m4206-3" value="2">
+                <label for="m4206-3" class="selectradio-label">長崎</label>
+                </li>
+            </ul>
+        </div>
+
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m4207" id="m4207-1" value="1" >
+                <label for="m4207-1" class="selectradio-label">横浜C</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m4207" id="m4207-2" value="0" >
+                <label for="m4207-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m4207" id="m4207-3" value="2">
+                <label for="m4207-3" class="selectradio-label">愛媛</label>
+                </li>
+            </ul>
+        </div>
+
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m4208" id="m4208-1" value="1" >
+                <label for="m4208-1" class="selectradio-label">東京V</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m4208" id="m4208-2" value="0" >
+                <label for="m4208-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m4208" id="m4208-3" value="2">
+                <label for="m4208-3" class="selectradio-label">岐阜</label>
+                </li>
+            </ul>
+        </div>
+
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m4209" id="m4209-1" value="1" >
+                <label for="m4209-1" class="selectradio-label">金沢</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m4209" id="m4209-2" value="0" >
+                <label for="m4209-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m4209" id="m4209-3" value="2">
+                <label for="m4209-3" class="selectradio-label">大宮</label>
+                </li>
+            </ul>
+        </div>
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m4210" id="m4210-1" value="1" >
+                <label for="m4210-1" class="selectradio-label">柏</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m4210" id="m4210-2" value="0" >
+                <label for="m4210-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m4210" id="m4210-3" value="2">
+                <label for="m4210-3" class="selectradio-label">京都</label>
+                </li>
+            </ul>
+        </div>
+        <div class="u-mb-20">
+            <ul class="selectradio selectradio-inline">
+                <li class="selectradio-item">
+                <input type="radio" name="m4211" id="m4211-1" value="1" >
+                <label for="m4211-1" class="selectradio-label">福岡</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m4211" id="m4211-2" value="0" >
+                <label for="m4211-2" class="selectradio-label">ドロ―</label>
+                </li>
+                <li class="selectradio-item">
+                <input type="radio" name="m4211" id="m4211-3" value="2">
+                <label for="m4211-3" class="selectradio-label">鹿児島</label>
+                </li>
+            </ul>
+        </div>
+        </details>
+        <br>
+
+
+        <input type="button" value="勝点計算！" onclick="func()" class="is-fixed-bottun">
+        <input type="button" value="表を閉じる" onclick="closetable()" class="is-fixed-bottun-2">
+
+    </form>
+
+    <div>
+    <table id="table" class="is-fixed" border="1">
+    </table>
+    </div>
+
+
+    <canvas id="myChart" width="400" height="700"></canvas>
+
+
+
+
+  </body>
+</html>
