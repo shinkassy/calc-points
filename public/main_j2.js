@@ -800,7 +800,7 @@ function func() {
     var pointtable =[
         {name: '柏', point: kasi},
         {name: '山形', point: yamagata},
-        {name: '横浜C', point: yokoc},
+        {name: '横浜FC', point: yokoc},
         {name: '水戸', point: mito},
         {name: '大宮', point: omi},
         {name: '京都', point: kyoto},

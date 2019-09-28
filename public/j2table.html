@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>J2勝点シミュレータ（仮）</title>
-    <meta property="og:url" content="https://calc-points.web.app" />
+    <meta property="og:url" content="https://calc-points.web.app/j2table.html" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="J2勝点シミュレータ（仮）" />
-    <meta property="og:description" content="残り試合数も少なくなってきた2019年シーズン。優勝、ACL、残留と気が気でないあなたに、いっそのこと自分で計算してみましょうというサイトを（ザックリ）作りました。"/>
+    <meta property="og:description" content="残り試合数も少なくなってきた2019年シーズン。優勝、昇格、残留と気が気でないあなたに、いっそのこと自分で計算してみましょうというサイトを（ザックリ）作りました。"/>
     <meta property="og:site_name" content="J2勝点シミュレータ（仮）" />
-    <meta property="og:image" content=" https://calc-points.web.app/point-calc-og.png" />
+    <meta property="og:image" content=" https://calc-points.web.app/point-calc-j2-og.png" />
     <meta name="twitter:card" content="summary" />
 
     <style media="screen">
@@ -21,14 +21,15 @@
             padding: 0 0px; cursor: pointer; color: #333333; border: 2px solid rgba(0, 0, 0, 0); border-radius: 5px; background: #EEFECD; transition: 0.5s; border-radius: 4px; }
         .selectradio.selectradio-inline .selectradio-item { display: inline-block; }
         .selectradio.selectradio-inline .selectradio-label { display: inline-block; width: 50px; }
-        .is-fixed { position: fixed; top: 30px; right: 0; z-index: 2; width: 40%;}
-        .is-fixed-bottun { position: fixed; top: 5px; right: 80px; z-index: 2; width: 75px;}
-        .is-fixed-bottun-2 { position: fixed; top: 5px; right: 5px; z-index: 2; width: 75px;}
+        .is-fixed { position: fixed; top: 3px; right: 0; z-index: 2; width: 40%;}
+        .is-fixed-bottun { position: fixed; top: 5px; left: 5px; z-index: 2; width: 75px;}
+        .is-fixed-bottun-2 { position: fixed; top: 5px; left: 80px; z-index: 2; width: 75px;}
     </style>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
     <script type="text/javascript" src="main_j2.js"></script>
   </head>
   <body>
+    <br><br>
 
     J2勝点シミュレータ（仮）
 
@@ -37,11 +38,11 @@
     <form id="calctable" name="ptable" action="#">
         <!--34節-->
         <details>
-        <summary>34節</summary>
+        <summary>34節（9/28分反映）</summary>
         <div class="u-mb-20">
             <ul class="selectradio selectradio-inline">
                 <li class="selectradio-item">
-                <input type="radio" name="m3401" id="m3401-1" value="1" >
+                <input type="radio" name="m3401" id="m3401-1" value="1" checked="checked">
                 <label for="m3401-1" class="selectradio-label">新潟</label>
                 </li>
                 <li class="selectradio-item">
@@ -58,7 +59,7 @@
         <div class="u-mb-20">
             <ul class="selectradio selectradio-inline">
                 <li class="selectradio-item">
-                <input type="radio" name="m3402" id="m3402-1" value="1" >
+                <input type="radio" name="m3402" id="m3402-1" value="1" checked="checked">
                 <label for="m3402-1" class="selectradio-label">柏</label>
                 </li>
                 <li class="selectradio-item">
@@ -75,7 +76,7 @@
         <div class="u-mb-20">
             <ul class="selectradio selectradio-inline">
                 <li class="selectradio-item">
-                <input type="radio" name="m3403" id="m3403-1" value="1" >
+                <input type="radio" name="m3403" id="m3403-1" value="1" checked="checked">
                 <label for="m3403-1" class="selectradio-label">愛媛</label>
                 </li>
                 <li class="selectradio-item">
@@ -92,7 +93,7 @@
         <div class="u-mb-20">
             <ul class="selectradio selectradio-inline">
                 <li class="selectradio-item">
-                <input type="radio" name="m3404" id="m3404-1" value="1" >
+                <input type="radio" name="m3404" id="m3404-1" value="1" checked="checked">
                 <label for="m3404-1" class="selectradio-label">大宮</label>
                 </li>
                 <li class="selectradio-item">
@@ -109,7 +110,7 @@
         <div class="u-mb-20">
             <ul class="selectradio selectradio-inline">
                 <li class="selectradio-item">
-                <input type="radio" name="m3405" id="m3405-1" value="1" >
+                <input type="radio" name="m3405" id="m3405-1" value="1" checked="checked">
                 <label for="m3405-1" class="selectradio-label">徳島</label>
                 </li>
                 <li class="selectradio-item">
@@ -126,7 +127,7 @@
         <div class="u-mb-20">
             <ul class="selectradio selectradio-inline">
                 <li class="selectradio-item">
-                <input type="radio" name="m3406" id="m3406-1" value="1" >
+                <input type="radio" name="m3406" id="m3406-1" value="1" checked="checked">
                 <label for="m3406-1" class="selectradio-label">山口</label>
                 </li>
                 <li class="selectradio-item">
@@ -151,7 +152,7 @@
                 <label for="m3407-2" class="selectradio-label">ドロ―</label>
                 </li>
                 <li class="selectradio-item">
-                <input type="radio" name="m3407" id="m3407-3" value="2">
+                <input type="radio" name="m3407" id="m3407-3" value="2" checked="checked">
                 <label for="m3407-3" class="selectradio-label">京都</label>
                 </li>
             </ul>
@@ -1774,7 +1775,7 @@
     </form>
 
     <div>
-    <table id="table" class="is-fixed" border="1">
+    <table id="table" class="is-fixed" bgcolor="#FFFFFF" border="1">
     </table>
     </div>
 
