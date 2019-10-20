@@ -18,6 +18,25 @@ function func() {
     var matsumoto = 24;
     var iwata = 18;
 
+    var tokyowins = [0, 0, 0];
+    var kashimawins = [0, 0, 0];
+    var yokohamawins = [0, 0, 0];
+    var kawasakiwins = [0, 0, 0];
+    var hiroshimawins = [0, 0, 0];
+    var cosakawins = [0, 0, 0];
+    var sapporowins = [0, 0, 0];
+    var ooitawins = [0, 0, 0];
+    var kobewins = [0, 0, 0];
+    var simizuwins = [0, 0, 0];
+    var nagoyawins = [0, 0, 0];
+    var gosakawins = [0, 0, 0];
+    var shonanwins = [0, 0, 0];
+    var sendaiwins = [0, 0, 0];
+    var urawawins = [0, 0, 0];
+    var tosuwins = [0, 0, 0];
+    var matsumotowins = [0, 0, 0];
+    var iwatawins = [0, 0, 0];
+
     var tokyoary = [tokyo];
     var kashimaary = [kashima];
     var yokohamaary = [yokohama];
@@ -46,22 +65,35 @@ function func() {
     var a = radioNodeList.value ;
     cosaka = cosaka + pointh(a);
     gosaka = gosaka + pointa(a);
+    //cosakawins = win(pointh(a),cosakawins);
+    //gosakawins = win(pointa(a),gosakawins);
+
     radioNodeList = element.m272 ;
     a = radioNodeList.value ;
     tosu = tosu + pointh(a);
     urawa = urawa + pointa(a);
+    //tosuwins = win(pointh(a),tosuwins);
+    //urawawins = win(pointa(a),urawawins);
+
     radioNodeList = element.m273 ;
     a = radioNodeList.value ;
     kashima = kashima + pointh(a);
     sapporo = sapporo + pointa(a);
+    //kashimawins = win(pointh(a),kashimawins);
+    //sapporowins = win(pointa(a),sapporowins);
+
     radioNodeList = element.m274 ;
     a = radioNodeList.value ;
     kawasaki = kawasaki + pointh(a);
     kobe = kobe + pointa(a);
+    //kawasakiwins = win(pointh(a),kawasakiwins);
+    //kobewins = win(pointa(a),kobewins);
+
     radioNodeList = element.m275 ;
     a = radioNodeList.value ;
     ooita = ooita + pointh(a);
     iwata = iwata + pointa(a);
+
     radioNodeList = element.m276 ;
     a = radioNodeList.value ;
     sendai = sendai + pointh(a);
@@ -698,6 +730,18 @@ function pointa(res){
         return 3;
     }
 }
+
+function win(res,wins){
+    if(res == 3){
+        wins[0] = wins[0] + 1;
+    }else if(res == 1){
+        wins[1] = wins[1] + 1;
+    }else if(res == 0){
+        wins[2] = wins[2] + 1;
+    }
+    return wins;
+}
+
 function closetable(){
     document.getElementById("table").innerHTML = "";
 }

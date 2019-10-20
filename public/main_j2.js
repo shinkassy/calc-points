@@ -1024,6 +1024,9 @@ function pointa(res){
         return 3;
     }
 }
+
+
+
 function closetable(){
     document.getElementById("table").innerHTML = "";
 }
